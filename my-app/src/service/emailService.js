@@ -1,10 +1,10 @@
 const api = require("./apiService")
 
-module.exports = {
-    validarEmail: async (email) => {
-        return await api.post(`/consultas/email`, email)
-    },
-    recuperarSenha: async(email) =>{
-        return await api.post(`/email/senha`, email)
+export default class Email {
+    validarEmail(email) {
+        return api.post(`/consultas/email`, email)
+    }
+    recuperarSenha(email) {
+        return api.post(`/email/senha`, email)
     }
 }

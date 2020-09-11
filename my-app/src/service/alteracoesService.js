@@ -1,45 +1,45 @@
 const api = require("./apiService");
 
-module.exports = {
+export default class Alteracoes {
 
-    getEndereco: async (id) => {
-        return await api.get(`/enderecos/buscar-solicitante/${id}`)
-    },
+    static getEndereco(id) {
+        return api.get(`/enderecos/buscar-solicitante/${id}`)
+    }
 
-    changeAdress: async (enderecoNovo, id) => {
-        return await api.put(`/enderecos/alterar-endereco/${id}`, enderecoNovo)
-    },
+    static changeAdress(enderecoNovo, id) {
+        return api.put(`/enderecos/alterar-endereco/${id}`, enderecoNovo)
+    }
 
-    emailPrestador: async (email, id) => {
-        return await api.put(`/prestadores/alterar_email/${id}`, email)
-    },
+    static emailPrestador(email, id) {
+        return api.put(`/prestadores/alterar_email/${id}`, email)
+    }
 
-    emailSolicitante: async (email, id) => {
-        return await api.put(`/solicitantes/alterar_email/${id}`, email)
-    },
+    static emailSolicitante(email, id) {
+        return api.put(`/solicitantes/alterar_email/${id}`, email)
+    }
 
-    senhaPrestador: async (senha, id) => {
-        return await api.put(`/prestadores/alterar_senha/${id}`, senha)
-    },
+    static senhaPrestador(senha, id) {
+        return api.put(`/prestadores/alterar_senha/${id}`, senha)
+    }
 
-    senhaSolicitante: async (senha, id) => {
-        return await api.put(`/solicitantes/alterar_senha/${id}`, senha)
-    },
+    static senhaSolicitante(senha, id) {
+        return api.put(`/solicitantes/alterar_senha/${id}`, senha)
+    }
 
-    telefonePrestador: async (telefone, id) => {
-        return await api.put(`/prestadores/alterar_telefone/${id}`, telefone)
-    },
+    static telefonePrestador(telefone, id) {
+        return api.put(`/prestadores/alterar_telefone/${id}`, telefone)
+    }
 
-    telefoneSolicitante: async (telefone, id) => {
-        return await api.put(`/solicitantes/alterar_telefone/${id}`, telefone)
-    },
+    static telefoneSolicitante(telefone, id) {
+        return api.put(`/solicitantes/alterar_telefone/${id}`, telefone)
+    }
 
-    imgPrestador: async (imagem, id) => {
-        return await api.put(`/prestadores/alterar_imagem/${id}`, imagem)
-    },
+    static imgPrestador(imagem, id) {
+        return api.put(`/prestadores/alterar_imagem/${id}`, imagem)
+    }
 
-    imgSolicitante: async (imagem, id) => {
-        return await api.put(`/solicitantes/alterar_imagem/${id}`, imagem)
-    },
+    static imgSolicitante(imagem, id) {
+        return api.put(`/solicitantes/alterar_imagem/${id}`, imagem)
+    }
 
 }

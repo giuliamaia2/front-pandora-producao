@@ -8,14 +8,14 @@ const headers = {
 
 const imgURL = "https://api.imgur.com/3/image"
 
-module.exports = {
 
-    uploadImagem: async (params) => {
-        return await api.postImg(imgURL, params, headers);
-    },
+export default class Image {
 
-    upload: async (params) => {
-        return await api.postImg(imgURL, params, headers);
-    },
+    uploadImagem(params) {
+        return api.postImg(imgURL, params, headers);
+    }
 
+    upload(params) {
+        return api.postImg(imgURL, params, headers);
+    }
 }

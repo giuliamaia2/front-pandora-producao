@@ -1,14 +1,14 @@
 const api = require('./apiService');
 const url = "/avaliacoes"
 
-module.exports = {
+export default class Avaliacoes {
 
-    avaliar: async (avaliacao) => {
-        return await api.post(`${url}/novo`, avaliacao)
-    },
+    avaliar(avaliacao) {
+        return api.post(`${url}/novo`, avaliacao)
+    }
 
-    byId: async (id) => {
-        return await api.get(`${url}/minhas_avaliacoes/${id}`)
-    },
+    byId(id) {
+        return api.get(`${url}/minhas_avaliacoes/${id}`)
+    }
 
 }

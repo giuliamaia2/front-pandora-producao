@@ -1,7 +1,7 @@
 const api = require('./apiService')
 
-module.exports = {
-    buscarCep: async (cep) => {
-        return await api.get(`/consultas/cep/${cep}`);
+export default class CEP {
+    buscarCep(cep) {
+        return api.get(`/consultas/cep/${cep}`);
     }
 }

@@ -2,42 +2,42 @@
 const api = require('./apiService');
 const url = "/solicitacoes";
 
-module.exports = {
+export default class Solicitacoes {
 
-    getAprovados: async (id, tipo) => {
-        return await api.get(`${url}/${tipo}/buscar/${id}?status=aprovado`);
-    },
+    getAprovados(id, tipo) {
+        return api.get(`${url}/${tipo}/buscar/${id}?status=aprovado`);
+    }
 
-    getSolicitados: async (id, tipo) => {
-        return await api.get(`${url}/${tipo}/buscar/${id}?status=solicitado`);
-    },
+    getSolicitados(id, tipo) {
+        return api.get(`${url}/${tipo}/buscar/${id}?status=solicitado`);
+    }
 
-    getExecucao: async (id, tipo) => {
-        return await api.get(`${url}/${tipo}/buscar/${id}?status=execucao`);
-    },
+    getExecucao(id, tipo) {
+        return api.get(`${url}/${tipo}/buscar/${id}?status=execucao`);
+    }
 
-    getFinalizados: async (id, tipo) => {
-        return await api.get(`${url}/${tipo}/buscar/${id}?status=fechado`);
-    },
+    getFinalizados(id, tipo) {
+        return api.get(`${url}/${tipo}/buscar/${id}?status=fechado`);
+    }
 
-    getCancelados: async (id, tipo) => {
-        return await api.get(`${url}/${tipo}/buscar/${id}?status=cancelado`);
-    },
+    getCancelados(id, tipo) {
+        return api.get(`${url}/${tipo}/buscar/${id}?status=cancelado`);
+    }
 
-    aprovarSolicitacao: async (id) => {
-        return await api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "aprovado" });
-    },
+    aprovarSolicitacao(id) {
+        return api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "aprovado" });
+    }
 
-    executarSolicitacao: async (id, status) => {
-        return await api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "EXECUCAO" });
-    },
+    executarSolicitacao(id, status) {
+        return api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "EXECUCAO" });
+    }
 
-    cancelarSolicitacao: async (id) => {
-        return await api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "cancelado" });
-    },
+    cancelarSolicitacao(id) {
+        return api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "cancelado" });
+    }
 
-    finalizarSolicitacao: async (id) => {
-        return await api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "FECHADO" });
-    },
+    finalizarSolicitacao(id) {
+        return api.put(`${url}/atualizar_solicitacao/${id}`, { "status": "FECHADO" });
+    }
 
 }

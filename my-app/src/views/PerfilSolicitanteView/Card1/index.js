@@ -3,7 +3,7 @@ import { withStyles, Grid, Paper } from '@material-ui/core';
 import EditImage from './EditImage';
 import Alteracoes from '../../DialogView/Alteracoes/index';
 import imageService from '../../../service/image/imageService'
-import alteracoesService from '../../../service/alteracoesService'
+import alteracoes from '../../../service/alteracoesService'
 import Backdrop from '../../../components/Backdrop'
 import Informacoes from './Informacoes';
 import localStorage from '../../../service/localStorage';
@@ -70,7 +70,7 @@ function Card1(props) {
 
     function changeImage(imagem) {
         const alteracao = { "imagem": imagem }
-        alteracoesService.imgSolicitante
+        alteracoes.imgSolicitante
             (alteracao, id)
             .then(response => {
                 setOpenBackdrop(false);

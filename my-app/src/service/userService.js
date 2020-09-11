@@ -1,30 +1,30 @@
 const api = require("./apiService")
 
-module.exports = {
+export default class User {
 
-    registerProvider: async (provider) => {
-        return await api.post("/users", provider)
-    },
+    registerProvider(provider) {
+        return api.post("/users", provider)
+    }
 
-    registerRequester: async (requester) => {
-        return await api.post("/users", requester)
-    },
+    registerRequester(requester) {
+        return api.post("/users", requester)
+    }
 
-    login: async (credentials) => {
-        return await api.post("/user/logar", credentials)
-    },
+    login(credentials) {
+        return api.post("/user/logar", credentials)
+    }
 
-    registerSolicitante: async (informacoes) => {
-        return await api.post("/solicitantes/cadastrar", informacoes)
-    },
+    registerSolicitante(informacoes) {
+        return api.post("/solicitantes/cadastrar", informacoes)
+    }
 
-    registerEndereco: async (informacoes) => {
-        return await api.post("/enderecos/cadastrar", informacoes)
-    },
+    registerEndereco(informacoes) {
+        return api.post("/enderecos/cadastrar", informacoes)
+    }
 
-    registerPrestador: async (prestador) => {
-        return await api.post("/prestadores/cadastrar", prestador)
-    },
+    registerPrestador(prestador) {
+        return api.post("/prestadores/cadastrar", prestador)
+    }
 
 }
 
