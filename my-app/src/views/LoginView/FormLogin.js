@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 import H1 from './../../components/forms/h1-login'
 import RecuperarSenha from '../DialogView/Servicos/RecuperarSenha'
 
-import userService from './../../service/userService'
+import UserService from './../../service/userService'
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -26,7 +26,13 @@ const button = {
     height: '50px',
 }
 
+
 class FormLogin extends React.Component {
+
+    constructor() {
+        super();
+        this.service = new UserService();
+    }
 
     state = {
         email: '',
@@ -38,27 +44,29 @@ class FormLogin extends React.Component {
     }
 
     entrar = () => {
-        userService.login({
+        const credentials = {
             email: this.state.email,
             senha: this.state.senha
-        }).then(response => {
-            console.log(response)
-            this.context.iniciarSessao(response.data);
-            if (response.data.solicitante) {
-                this.props.history.push('/home-solicitante')
-            } else {
-                this.props.history.push('/home-prestador')
-            }
-        }).catch(erro => {
-            try {
-                console.log(erro);
-                this.errorMessage(erro.response.data)
-            } catch (erro2) {
-                console.log(erro2);
-                this.errorMessage('Erro no servidor')
-            }
+        }
+        this.service.login(credentials)
+            .then(response => {
+                console.log(response)
+                this.context.iniciarSessao(response.data);
+                if (response.data.solicitante) {
+                    this.props.history.push('/home-solicitante')
+                } else {
+                    this.props.history.push('/home-prestador')
+                }
+            }).catch(erro => {
+                try {
+                    console.log(erro);
+                    this.errorMessage(erro.response.data)
+                } catch (erro2) {
+                    console.log(erro2);
+                    this.errorMessage('Erro no servidor')
+                }
 
-        })
+            })
     }
 
     sucessMessage() {

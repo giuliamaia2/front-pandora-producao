@@ -1,40 +1,52 @@
-const axios = require('axios')
-const baseUrl = "http://localhost:8080"
+import axios from 'axios';
 
-module.exports = {
-    get: async (uri) => {
-        let res = await axios.get(baseUrl + uri)
+const httpClient = axios.create({
+    baseURL: "https://ec2-52-20-131-9.compute-1.amazonaws.com:8080"
+})
+
+
+class ApiService {
+
+    constructor(apiurl) {
+        this.apiurl = apiurl;
+    }
+
+    get(uri) {
+        const requestURL = `${this.apiurl}${uri}`;
+        let res = httpClient.get(requestURL)
         return {
             data: res.data,
             status: res.status
         }
-    },
+    }
 
-    post: async (uri, params) => {
-        let res = await axios.post(baseUrl + uri, params);
+    post(uri, params) {
+        const requestURL = `${this.apiurl}${uri}`;
+        let res = httpClient.post(requestURL, params);
         return {
             data: res.data,
             status: res.status
         }
-    },
+    }
 
-    put: async (uri, params) => {
-        let res = await axios.put(baseUrl + uri, params);
+    put(uri, params) {
+        const requestURL = `${this.apiurl}${uri}`;
+        let res = httpClient.put(requestURL, params);
         return {
             data: res.data,
             status: res.status
         }
-    },
+    }
 
-    delete: async (uri) => {
-        let res = await axios.delete(baseUrl + uri)
+    delete(uri) {
+        const requestURL = `${this.apiurl}${uri}`;
+        let res = httpClient.delete(requestURL)
         return res.status
-    },
+    }
 
 
-
-    postImg: async (url, params, headers) => {
-        let res = await axios.post(url, params, headers);
+    postImg(url, params, headers) {
+        let res = httpClient.post(url, params, headers);
         return {
             data: res.data,
             status: res.status
@@ -42,3 +54,5 @@ module.exports = {
     }
 
 }
+
+export default ApiService;

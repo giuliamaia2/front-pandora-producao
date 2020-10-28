@@ -1,30 +1,31 @@
-const api = require("./apiService")
+import ApiService from './apiService';
 
-export default class User {
+class UserService extends ApiService {
 
-    registerProvider(provider) {
-        return api.post("/users", provider)
+    constructor() {
+        super('');
     }
 
     registerRequester(requester) {
-        return api.post("/users", requester)
+        return this.post("/users", requester)
     }
 
     login(credentials) {
-        return api.post("/user/logar", credentials)
+        return this.post("/user/logar", credentials)
     }
 
     registerSolicitante(informacoes) {
-        return api.post("/solicitantes/cadastrar", informacoes)
+        return this.post("/solicitantes/cadastrar", informacoes)
     }
 
     registerEndereco(informacoes) {
-        return api.post("/enderecos/cadastrar", informacoes)
+        return this.post("/enderecos/cadastrar", informacoes)
     }
 
     registerPrestador(prestador) {
-        return api.post("/prestadores/cadastrar", prestador)
+        return this.post("/prestadores/cadastrar", prestador)
     }
 
 }
 
+export default UserService;
