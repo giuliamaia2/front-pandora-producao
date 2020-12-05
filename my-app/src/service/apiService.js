@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const httpClient = axios.create({
-    baseURL: "https://ec2-52-20-131-9.compute-1.amazonaws.com:8080"
+    baseURL: "https://loadbalanceback.sytes.net"
 })
 
 
